@@ -1,12 +1,20 @@
 package project.ssumc7thspringboota.domain.user;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.Set;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
+import project.ssumc7thspringboota.domain.inquiry.Inquiry;
 import project.ssumc7thspringboota.domain.review.Review;
 import project.ssumc7thspringboota.domain.usermission.UserMission;
 import project.ssumc7thspringboota.domain.userpreferredfoodtype.UserPreferredFoodType;
@@ -21,23 +29,23 @@ public class User extends BaseEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long userId;
 
-  @Column(length = 100, nullable = false)
+  @Column(nullable = false)
   private String name;
 
-  @Column(length = 100, unique = true, nullable = false)
+  @Column(unique = true, nullable = false)
   private String email;
 
   private Integer points;
 
-  @Column(length = 10)
+  @Column
   private String gender;
 
   private LocalDate dateOfBirth;
 
-  @Column(length = 255)
+  @Column
   private String address;
 
-  @Column(length = 15)
+  @Column
   private String phoneNumber;
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
@@ -48,4 +56,7 @@ public class User extends BaseEntity {
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
   private Set<UserMission> userMissions;
+
+  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+  private Set<Inquiry> inquiries;
 }
