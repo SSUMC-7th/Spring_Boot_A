@@ -9,5 +9,4 @@ public class Ssumc7thSpringBootAApplication {
   public static void main(String[] args) {
     SpringApplication.run(Ssumc7thSpringBootAApplication.class, args);
   }
-
 }
