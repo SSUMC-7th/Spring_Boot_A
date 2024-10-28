@@ -23,12 +23,15 @@ public class Review extends BaseEntity {
     @Column(nullable = false, length = 200)
     private String content;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private List<Region> RegionList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private List<Member> MemberList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private List<Restaurant> RestaurantList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 }

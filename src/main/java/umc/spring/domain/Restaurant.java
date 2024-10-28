@@ -26,6 +26,13 @@ public class Restaurant extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private List<Region> RegionList = new ArrayList<>();
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    private List<Review> ReviewList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    private List<Mission> Mission = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 }

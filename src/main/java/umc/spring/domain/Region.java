@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -21,4 +24,13 @@ public class Region extends BaseEntity {
     private Integer successNumber;
 
     private boolean isRewarded;
+
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
+    private List<Mission> MissionList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
+    private List<Review> ReviewList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
+    private List<Restaurant> RestaurantList = new ArrayList<>();
 }

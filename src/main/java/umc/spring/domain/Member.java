@@ -7,6 +7,8 @@ import umc.spring.domain.enums.Gender;
 import umc.spring.domain.enums.Status;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -42,4 +44,10 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(10) DEFAULT 'ACTIVE'")
     private Status status;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Mission> MissionList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Review> ReviewList = new ArrayList<>();
 }

@@ -29,12 +29,15 @@ public class Mission {
     @Column(columnDefinition = "VARCHAR(10) DEFAULT 'ACTIVE'")
     private Status status;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private List<Region> RegionList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private List<Member> MemberList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private List<Restaurant> RestaurantList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 }
