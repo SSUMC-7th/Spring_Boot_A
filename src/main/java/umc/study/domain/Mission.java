@@ -24,6 +24,7 @@ public class Mission extends BaseEntity {
 
     private LocalDate deadline;
 
+    @Column(columnDefinition = "TEXT")
     private String missionSpec;
 
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
