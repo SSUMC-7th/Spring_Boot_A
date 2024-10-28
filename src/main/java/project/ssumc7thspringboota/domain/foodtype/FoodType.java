@@ -11,8 +11,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
-import project.ssumc7thspringboota.domain.storefoodtype.StoreFoodType;
-import project.ssumc7thspringboota.domain.userpreferredfoodtype.UserPreferredFoodType;
+import project.ssumc7thspringboota.domain.mapping.storefoodtype.StoreFoodType;
+import project.ssumc7thspringboota.domain.mapping.userpreferredfoodtype.UserPreferredFoodType;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

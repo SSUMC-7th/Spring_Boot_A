@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
 import project.ssumc7thspringboota.domain.store.Store;
-import project.ssumc7thspringboota.domain.usermission.UserMission;
+import project.ssumc7thspringboota.domain.mapping.usermission.UserMission;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

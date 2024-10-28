@@ -1,4 +1,4 @@
-package project.ssumc7thspringboota.domain.storefoodtype;
+package project.ssumc7thspringboota.domain.inquiry.inquiryphoto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,23 +11,20 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
-import project.ssumc7thspringboota.domain.foodtype.FoodType;
-import project.ssumc7thspringboota.domain.store.Store;
+import project.ssumc7thspringboota.domain.inquiry.Inquiry;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class StoreFoodType extends BaseEntity {
+public class InquiryPhoto extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long storeFoodTypeId;
+  private Long inquiryPhotoId;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "store_id")
-  private Store store;
+  @JoinColumn(name = "inquiry_id")
+  private Inquiry inquiry;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "food_type_id")
-  private FoodType foodType;
+  private String photoUrl;
 }
