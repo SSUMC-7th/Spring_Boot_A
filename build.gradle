@@ -24,17 +24,10 @@ repositories {
 }
 
 dependencies {
-<<<<<<< HEAD
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
-=======
-//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-//	runtimeOnly 'com.mysql:mysql-connector-j'
->>>>>>> c92129f9fd7679406f0a7515277286e6001d2652
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -42,8 +35,5 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c92129f9fd7679406f0a7515277286e6001d2652
+
