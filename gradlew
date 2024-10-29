@@ -15,8 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+<<<<<<< HEAD
+=======
 # SPDX-License-Identifier: Apache-2.0
 #
+>>>>>>> c92129f9fd7679406f0a7515277286e6001d2652
 
 ##############################################################################
 #
@@ -57,7 +60,11 @@
 #       Darwin, MinGW, and NonStop.
 #
 #   (3) This script is generated from the Groovy template
+<<<<<<< HEAD
+#       https://github.com/gradle/gradle/blob/HEAD/subprojects/plugins/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+=======
 #       https://github.com/gradle/gradle/blob/HEAD/platforms/jvm/plugins-application/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+>>>>>>> c92129f9fd7679406f0a7515277286e6001d2652
 #       within the Gradle project.
 #
 #       You can find Gradle at https://github.com/gradle/gradle/.
@@ -85,9 +92,16 @@ done
 # This is normally unused
 # shellcheck disable=SC2034
 APP_BASE_NAME=${0##*/}
+<<<<<<< HEAD
+APP_HOME=$( cd "${APP_HOME:-./}" && pwd -P ) || exit
+
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+=======
 # Discard cd standard output in case $CDPATH is set (https://github.com/gradle/gradle/issues/25036)
 APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s
 ' "$PWD" ) || exit
+>>>>>>> c92129f9fd7679406f0a7515277286e6001d2652
 
 # Use the maximum available, or set MAX_FD != -1 to use that value.
 MAX_FD=maximum
@@ -134,6 +148,12 @@ location of your Java installation."
     fi
 else
     JAVACMD=java
+<<<<<<< HEAD
+    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+=======
     if ! command -v java >/dev/null 2>&1
     then
         die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
@@ -141,6 +161,7 @@ else
 Please set the JAVA_HOME variable in your environment to match the
 location of your Java installation."
     fi
+>>>>>>> c92129f9fd7679406f0a7515277286e6001d2652
 fi
 
 # Increase the maximum file descriptors if we can.
@@ -148,7 +169,11 @@ if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
     case $MAX_FD in #(
       max*)
         # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
+<<<<<<< HEAD
+        # shellcheck disable=SC3045
+=======
         # shellcheck disable=SC2039,SC3045
+>>>>>>> c92129f9fd7679406f0a7515277286e6001d2652
         MAX_FD=$( ulimit -H -n ) ||
             warn "Could not query maximum file descriptor limit"
     esac
@@ -156,7 +181,11 @@ if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
       '' | soft) :;; #(
       *)
         # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
+<<<<<<< HEAD
+        # shellcheck disable=SC3045
+=======
         # shellcheck disable=SC2039,SC3045
+>>>>>>> c92129f9fd7679406f0a7515277286e6001d2652
         ulimit -n "$MAX_FD" ||
             warn "Could not set maximum file descriptor limit to $MAX_FD"
     esac
@@ -201,6 +230,13 @@ if "$cygwin" || "$msys" ; then
     done
 fi
 
+<<<<<<< HEAD
+# Collect all arguments for the java command;
+#   * $DEFAULT_JVM_OPTS, $JAVA_OPTS, and $GRADLE_OPTS can contain fragments of
+#     shell script including quotes and variable substitutions, so put them in
+#     double quotes to make sure that they get re-expanded; and
+#   * put everything else in single quotes, so that it's not re-expanded.
+=======
 
 # Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
 DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
@@ -210,6 +246,7 @@ DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
 #     and any embedded shellness will be escaped.
 #   * For example: A user cannot expect ${Hostname} to be expanded, as it is an environment variable and will be
 #     treated as '${Hostname}' itself on the command line.
+>>>>>>> c92129f9fd7679406f0a7515277286e6001d2652
 
 set -- \
         "-Dorg.gradle.appname=$APP_BASE_NAME" \
