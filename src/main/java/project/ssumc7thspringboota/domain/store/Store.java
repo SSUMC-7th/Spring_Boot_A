@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
 import project.ssumc7thspringboota.domain.mission.Mission;
 import project.ssumc7thspringboota.domain.review.Review;
-import project.ssumc7thspringboota.domain.storefoodtype.StoreFoodType;
+import project.ssumc7thspringboota.domain.mapping.storefoodtype.StoreFoodType;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

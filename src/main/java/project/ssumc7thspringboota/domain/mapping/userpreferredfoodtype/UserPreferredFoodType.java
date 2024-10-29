@@ -1,4 +1,4 @@
-package project.ssumc7thspringboota.domain.userpreferredfoodtype;
+package project.ssumc7thspringboota.domain.mapping.userpreferredfoodtype;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

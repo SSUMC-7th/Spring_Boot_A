@@ -14,7 +14,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
-import project.ssumc7thspringboota.domain.inquiryphoto.InquiryPhoto;
+import project.ssumc7thspringboota.domain.inquiry.inquiryphoto.InquiryPhoto;
 import project.ssumc7thspringboota.domain.user.User;
 
 @Entity

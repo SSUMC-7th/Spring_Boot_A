@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
 import project.ssumc7thspringboota.domain.inquiry.Inquiry;
 import project.ssumc7thspringboota.domain.review.Review;
-import project.ssumc7thspringboota.domain.usermission.UserMission;
-import project.ssumc7thspringboota.domain.userpreferredfoodtype.UserPreferredFoodType;
+import project.ssumc7thspringboota.domain.mapping.usermission.UserMission;
+import project.ssumc7thspringboota.domain.mapping.userpreferredfoodtype.UserPreferredFoodType;
 
 @Entity
 @Table(name = "users")
