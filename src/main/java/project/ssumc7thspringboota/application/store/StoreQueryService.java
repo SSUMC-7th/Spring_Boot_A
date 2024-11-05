@@ -7,5 +7,5 @@ import project.ssumc7thspringboota.domain.store.Store;
 public interface StoreQueryService {
 
   Optional<Store> findStore(Long id);
-  List<Store> findStoresByNameAndScore(String name, Double overallRating);
+  List<Store> findStoresByNameAndRating(String name, Double overallRating);
 }

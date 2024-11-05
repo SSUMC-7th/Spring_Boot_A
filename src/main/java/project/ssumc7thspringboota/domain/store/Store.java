@@ -42,4 +42,34 @@ public class Store extends BaseEntity {
 
   @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
   private Set<Mission> missions;
+
+  @Override
+  public String toString() {
+    String storeFoodTypesSize = "N/A";
+    if (storeFoodTypes != null) {
+      storeFoodTypesSize = String.valueOf(storeFoodTypes.size());
+    }
+
+    String reviewsSize = "N/A";
+    if (reviews != null) {
+      reviewsSize = String.valueOf(reviews.size());
+    }
+
+    String missionsSize = "N/A";
+    if (missions != null) {
+      missionsSize = String.valueOf(missions.size());
+    }
+
+    return "Store{" +
+        "storeId=" + storeId +
+        ", name='" + name + '\'' +
+        ", location='" + location + '\'' +
+        ", overallRating=" + overallRating +
+        ", phoneNumber='" + phoneNumber + '\'' +
+        ", businessHours='" + businessHours + '\'' +
+        ", storeFoodTypes=" + storeFoodTypesSize +
+        ", reviews=" + reviewsSize +
+        ", missions=" + missionsSize +
+        '}';
+  }
 }
