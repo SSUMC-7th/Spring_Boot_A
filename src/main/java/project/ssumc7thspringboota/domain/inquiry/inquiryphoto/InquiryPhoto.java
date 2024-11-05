@@ -20,7 +20,7 @@ public class InquiryPhoto extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long inquiryPhotoId;
+  private Long id;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "inquiry_id")

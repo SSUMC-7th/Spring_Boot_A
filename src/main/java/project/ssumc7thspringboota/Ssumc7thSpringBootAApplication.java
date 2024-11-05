@@ -22,7 +22,7 @@ public class Ssumc7thSpringBootAApplication {
       StoreQueryService storeService = context.getBean(StoreQueryService.class);
 
       // 파라미터 값 설정
-      String name = "요아정";
+      String name = "Store 1";
       Double overallRating = 4.0;
 
       // 쿼리 메서드 호출 및 쿼리 문자열과 파라미터 출력

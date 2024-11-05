@@ -22,7 +22,7 @@ public class Store extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long storeId;
+  private Long id;
 
   private String name;
 
@@ -61,7 +61,7 @@ public class Store extends BaseEntity {
     }
 
     return "Store{" +
-        "storeId=" + storeId +
+        "storeId=" + id +
         ", name='" + name + '\'' +
         ", location='" + location + '\'' +
         ", overallRating=" + overallRating +
