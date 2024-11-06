@@ -4,17 +4,15 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import umc.study.domain.QStore;
 import umc.study.domain.Store;
-
 import java.util.List;
+import static umc.study.domain.QStore.store;
 
 @Repository
 @RequiredArgsConstructor
 public class StoreRepositoryImpl implements StoreRepositoryCustom {
 
     private final JPAQueryFactory jpaQueryFactory;
-    private final QStore store = QStore.store;
 
     @Override
     public List<Store> dynamicQueryWithBooleanBuilder(String name, Float score) {
