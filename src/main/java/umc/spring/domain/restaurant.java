@@ -42,4 +42,13 @@ public class restaurant {
 
     @OneToMany(mappedBy = "restaurant_id", cascade = CascadeType.ALL)
     private List<user_review> user_reviewList = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", rating=" + rating + '}';
+    }
 }
