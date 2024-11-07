@@ -29,4 +29,8 @@ public class Mission extends BaseEntity {
 
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
     private List<MemberMission> memberMissionList = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "store_id") // store_id는 외래 키 컬럼 이름
+    private Store store;
 }
