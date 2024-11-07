@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.restaurant;
 import umc.spring.domain.user;
+import java.time.LocalDate;
 
 import java.time.LocalDateTime;
 
