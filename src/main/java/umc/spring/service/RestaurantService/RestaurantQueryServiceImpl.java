@@ -3,6 +3,7 @@ package umc.spring.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import umc.spring.apiPayload.exception.handler.TempHandler;
 import umc.spring.domain.restaurant;
 import umc.spring.repository.RestaurantRepository.RestaurantRepository;
 
