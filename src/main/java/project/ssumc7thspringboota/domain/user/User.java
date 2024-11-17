@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.Set;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
@@ -37,15 +38,12 @@ public class User extends BaseEntity {
 
   private Integer points;
 
-  @Column
   private String gender;
 
   private LocalDate dateOfBirth;
 
-  @Column
   private String address;
 
-  @Column
   private String phoneNumber;
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
@@ -59,4 +57,22 @@ public class User extends BaseEntity {
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
   private Set<Inquiry> inquiries;
+
+  @Builder
+  public User(String name, String email, Integer points, String gender,
+      LocalDate dateOfBirth, String address, String phoneNumber,
+      Set<UserPreferredFoodType> preferredFoodTypes, Set<Review> reviews,
+      Set<UserMission> userMissions, Set<Inquiry> inquiries) {
+    this.name = name;
+    this.email = email;
+    this.points = points != null ? points : 0;
+    this.gender = gender;
+    this.dateOfBirth = dateOfBirth;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+    this.preferredFoodTypes = preferredFoodTypes;
+    this.reviews = reviews;
+    this.userMissions = userMissions;
+    this.inquiries = inquiries;
+  }
 }
