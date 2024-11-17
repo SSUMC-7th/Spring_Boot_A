@@ -1,0 +1,40 @@
+package project.ssumc7thspringboota.api;
+
+import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import project.ssumc7thspringboota.exception.BusinessException;
+import project.ssumc7thspringboota.exception.ErrorResponse;
+
+@Slf4j
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    BindingResult bindingResult = e.getBindingResult();
+    String firstErrorMessage = bindingResult.getFieldError().getDefaultMessage();
+
+    List<String> errors = bindingResult.getFieldErrors()
+                                       .stream()
+                                       .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                                       .toList();
+
+    log.warn("MethodArgumentNotValidException: {}", errors);
+
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                         .body(ErrorResponse.of(HttpStatus.BAD_REQUEST.value(), firstErrorMessage));
+  }
+
+  @ExceptionHandler(BusinessException.class)
+  public ResponseEntity<ErrorResponse> handleBusinessException(BusinessException e) {
+    log.info("BusinessException: {}", e.getMessage());
+    return ResponseEntity.status(e.getCode()).body(ErrorResponse.of(e.getCode(), e.getMessage()));
+  }
+}

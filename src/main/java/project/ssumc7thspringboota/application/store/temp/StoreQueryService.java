@@ -1,4 +1,4 @@
-package project.ssumc7thspringboota.application.store;
+package project.ssumc7thspringboota.application.store.temp;
 
 import java.util.List;
 import java.util.Optional;
