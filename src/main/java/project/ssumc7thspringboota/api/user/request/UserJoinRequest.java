@@ -5,8 +5,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import java.util.Set;
 import java.time.LocalDate;
+import lombok.Getter;
 import project.ssumc7thspringboota.application.user.request.UserJoinServiceRequest;
 
+@Getter
 public class UserJoinRequest {
 
   @NotBlank(message = "이메일을 입력해주세요.")

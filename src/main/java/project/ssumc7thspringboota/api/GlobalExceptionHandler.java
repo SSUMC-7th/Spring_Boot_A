@@ -19,17 +19,18 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
     BindingResult bindingResult = e.getBindingResult();
-    String firstErrorMessage = bindingResult.getFieldError().getDefaultMessage();
 
     List<String> errors = bindingResult.getFieldErrors()
                                        .stream()
                                        .map(DefaultMessageSourceResolvable::getDefaultMessage)
                                        .toList();
 
+    String combinedErrors = String.join(", ", errors);
+
     log.warn("MethodArgumentNotValidException: {}", errors);
 
     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                         .body(ErrorResponse.of(HttpStatus.BAD_REQUEST.value(), firstErrorMessage));
+                         .body(ErrorResponse.of(HttpStatus.BAD_REQUEST.value(), combinedErrors));
   }
 
   @ExceptionHandler(BusinessException.class)

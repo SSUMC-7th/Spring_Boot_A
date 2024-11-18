@@ -3,8 +3,10 @@ package project.ssumc7thspringboota.api.review.request;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.Set;
+import lombok.Getter;
 import project.ssumc7thspringboota.application.review.request.ReviewCreateServiceRequest;
 
+@Getter
 public class ReviewCreateRequest {
 
   @NotNull(message = "유저 ID를 입력해주세요.")
