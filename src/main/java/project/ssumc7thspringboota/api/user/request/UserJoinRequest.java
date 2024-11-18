@@ -4,7 +4,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import java.util.Set;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -40,20 +39,6 @@ public class UserJoinRequest {
   private Integer points;
 
   private Set<Long> preferredFoodTypeIds;
-
-  @Builder
-  private UserJoinRequest(String email, String password, String username, LocalDate dateOfBirth,
-      String address, String phoneNumber, String gender, Integer points, Set<Long> preferredFoodTypeIds) {
-    this.email = email;
-    this.password = password;
-    this.username = username;
-    this.dateOfBirth = dateOfBirth;
-    this.address = address;
-    this.phoneNumber = phoneNumber;
-    this.gender = gender;
-    this.points = points;
-    this.preferredFoodTypeIds = preferredFoodTypeIds;
-  }
 
   public UserJoinServiceRequest toServiceRequest() {
     return UserJoinServiceRequest.builder()

@@ -2,7 +2,6 @@ package project.ssumc7thspringboota.api.mission.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.application.mission.request.MissionCreateServiceRequest;
@@ -19,13 +18,6 @@ public class MissionCreateRequest {
 
   @NotBlank(message = "미션 설명을 입력해주세요.")
   private String description;
-
-  @Builder
-  public MissionCreateRequest(Long storeId, Integer rewardPoints, String description) {
-    this.storeId = storeId;
-    this.rewardPoints = rewardPoints;
-    this.description = description;
-  }
 
   public MissionCreateServiceRequest toServiceRequest() {
     return MissionCreateServiceRequest.builder()

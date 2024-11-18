@@ -3,13 +3,10 @@ package project.ssumc7thspringboota.api.store.request;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.Set;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.application.store.request.StoreCreateServiceRequest;
 
 @Getter
-@NoArgsConstructor
 public class StoreCreateRequest {
 
   @NotBlank(message = "가게 이름을 입력해주세요.")
@@ -28,17 +25,6 @@ public class StoreCreateRequest {
   private String businessHours;
 
   private Set<Long> storeFoodTypeIds;
-
-  @Builder
-  private StoreCreateRequest(String name, Double overallRating, String location, String phoneNumber,
-      String businessHours, Set<Long> storeFoodTypeIds) {
-    this.name = name;
-    this.overallRating = overallRating;
-    this.location = location;
-    this.phoneNumber = phoneNumber;
-    this.businessHours = businessHours;
-    this.storeFoodTypeIds = storeFoodTypeIds;
-  }
 
   public StoreCreateServiceRequest toServiceRequest() {
     return StoreCreateServiceRequest.builder()

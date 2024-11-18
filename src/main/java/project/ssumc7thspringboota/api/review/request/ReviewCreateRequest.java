@@ -3,7 +3,6 @@ package project.ssumc7thspringboota.api.review.request;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.Set;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.application.review.request.ReviewCreateServiceRequest;
@@ -25,16 +24,6 @@ public class ReviewCreateRequest {
   private String reviewText;
 
   private Set<Long> reviewPhotoIds;
-
-  @Builder
-  private ReviewCreateRequest(Long userId, Long storeId, Double rating, String reviewText,
-      Set<Long> reviewPhotoIds) {
-    this.userId = userId;
-    this.storeId = storeId;
-    this.rating = rating;
-    this.reviewText = reviewText;
-    this.reviewPhotoIds = reviewPhotoIds;
-  }
 
   public ReviewCreateServiceRequest toServiceRequest() {
     return ReviewCreateServiceRequest.builder()
