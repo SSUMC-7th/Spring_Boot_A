@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.Set;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
@@ -42,6 +43,21 @@ public class Store extends BaseEntity {
 
   @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
   private Set<Mission> missions;
+
+  @Builder
+  private Store(String name, Double overallRating, String location,
+      String phoneNumber, String businessHours,
+      Set<StoreFoodType> storeFoodTypes, Set<Review> reviews,
+      Set<Mission> missions) {
+    this.name = name;
+    this.overallRating = overallRating;
+    this.location = location;
+    this.phoneNumber = phoneNumber;
+    this.businessHours = businessHours;
+    this.storeFoodTypes = storeFoodTypes;
+    this.reviews = reviews;
+    this.missions = missions;
+  }
 
   @Override
   public String toString() {
