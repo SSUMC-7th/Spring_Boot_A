@@ -45,6 +45,7 @@ public class UserService {
                     .build();
 
     User savedUser = userRepository.save(user);
-    return new UserJoinResponse(savedUser.getEmail(), savedUser.getName());
+
+    return UserJoinResponse.from(savedUser);
   }
 }

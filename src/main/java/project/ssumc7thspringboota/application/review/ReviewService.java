@@ -52,6 +52,6 @@ public class ReviewService {
 
     Review savedReview = reviewRepository.save(review);
 
-    return new ReviewCreateResponse(savedReview.getId(), savedReview.getStore().getId(), savedReview.getUser().getId(), savedReview.getRating());
+    return ReviewCreateResponse.from(savedReview);
   }
 }

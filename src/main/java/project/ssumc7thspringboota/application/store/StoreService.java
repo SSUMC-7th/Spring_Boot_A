@@ -39,6 +39,7 @@ public class StoreService {
                        .build();
 
     Store savedStore = storeRepository.save(store);
-    return new StoreCreateResponse(savedStore.getId(), savedStore.getName(), savedStore.getOverallRating(), savedStore.getLocation());
+
+    return StoreCreateResponse.from(savedStore);
   }
 }
