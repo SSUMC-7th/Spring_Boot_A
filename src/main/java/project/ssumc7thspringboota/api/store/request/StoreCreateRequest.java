@@ -3,10 +3,8 @@ package project.ssumc7thspringboota.api.store.request;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.Set;
-import lombok.Getter;
 import project.ssumc7thspringboota.application.store.request.StoreCreateServiceRequest;
 
-@Getter
 public class StoreCreateRequest {
 
   @NotBlank(message = "가게 이름을 입력해주세요.")
