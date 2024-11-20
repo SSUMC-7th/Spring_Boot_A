@@ -29,4 +29,12 @@ public class MemberMission extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
     private Mission mission;
+
+    public void setMember(Member member) { // 연관 관계 편의 메소드
+        if (this.member != null) {
+            member.getMemberMissionList().remove(this);
+        }
+        this.member = member;
+        member.getMemberMissionList().add(this);
+    }
 }
