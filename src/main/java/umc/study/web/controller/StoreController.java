@@ -4,8 +4,11 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import umc.study.apiPayload.ApiResponse;
+import umc.study.converter.ReviewConverter;
+import umc.study.domain.Review;
 import umc.study.repository.reviewRepository.ReviewRepository;
 import umc.study.repository.storeRepository.StoreRepository;
+import umc.study.service.storeService.StoreQueryService;
 import umc.study.web.dto.ReviewRequestDTO;
 import umc.study.web.dto.ReviewResponseDTO;
 
@@ -14,12 +17,11 @@ import umc.study.web.dto.ReviewResponseDTO;
 @RequestMapping("/stores")
 public class StoreController {
 
-    private final StoreRepository storeRepository;
-    private final ReviewRepository reviewRepository;
+    private final StoreQueryService storeQueryService;
 
-    @PostMapping("{storeId}/reviews")
-    public ApiResponse<ReviewResponseDTO.ReviewDTO> addReview(@RequestParam(value = "storeId") Long storeId
-            , @RequestBody @Valid ReviewRequestDTO.CreateReviewDTO review) {
-        return null;
+    @PostMapping("/reviews")
+    public ApiResponse<ReviewResponseDTO.ReviewDTO> addReview(@RequestBody @Valid ReviewRequestDTO.CreateReviewDTO review) {
+        Review newReview = storeQueryService.addReview(review);
+        return ApiResponse.onSuccess(ReviewConverter.toReviewResultDTO(newReview));
     }
 }
