@@ -8,11 +8,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import umc.study.apiPayload.ApiResponse;
 import umc.study.converter.MemberConverter;
 import umc.study.domain.Member;
+import umc.study.domain.Review;
 import umc.study.service.memberService.MemberCommandService;
+import umc.study.service.memberService.MemberQueryService;
 import umc.study.web.dto.MemberRequestDTO;
 import umc.study.web.dto.MemberResponseDTO;
 
@@ -21,6 +24,7 @@ import umc.study.web.dto.MemberResponseDTO;
 @RequestMapping("/members")
 public class MemberController {
     private final MemberCommandService memberCommandService;
+    private final MemberQueryService memberQueryService;
 
     @PostMapping("/")
     public ApiResponse<MemberResponseDTO.JoinResultDTO> join(@RequestBody @Valid MemberRequestDTO.JoinDTO request) {
@@ -40,6 +44,7 @@ public class MemberController {
             @Parameter(name = "memberId", description = "사용자의 아이디, path variable 입니다!")
     })
     public ApiResponse<MemberResponseDTO.ReviewPreViewListDTO> getReviewsList(@PathVariable Long memberId,@RequestParam(name = "page") Integer page) {
-        return null;
+        Page<Review> reviewList = memberQueryService.getReviewList(memberId, page);
+        return ApiResponse.onSuccess(MemberConverter.reviewPreViewListDTO(reviewList));
     }
 }
