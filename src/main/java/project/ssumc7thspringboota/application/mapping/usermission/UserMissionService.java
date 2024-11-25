@@ -1,10 +1,13 @@
 package project.ssumc7thspringboota.application.mapping.usermission;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.ssumc7thspringboota.application.mapping.usermission.request.UserMissionCreateServiceRequest;
 import project.ssumc7thspringboota.application.mapping.usermission.response.UserMissionCreateResponse;
+import project.ssumc7thspringboota.application.mapping.usermission.response.UserMissionListResponse;
 import project.ssumc7thspringboota.domain.mapping.usermission.UserMission;
 import project.ssumc7thspringboota.domain.mapping.usermission.repository.UserMissionRepository;
 import project.ssumc7thspringboota.domain.mission.Mission;
@@ -40,5 +43,16 @@ public class UserMissionService {
     UserMission savedUserMission = userMissionRepository.save(userMission);
 
     return UserMissionCreateResponse.from(savedUserMission);
+  }
+
+  @Transactional
+  public Page<UserMissionListResponse> getUserInProgressMissions(Long userId,
+      PageRequest pageRequest) {
+    User user = userRepository.findById(userId)
+                              .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
+
+    Page<UserMission> userMissions = userMissionRepository.findByUserIdAndStatus(user.getId(), "IN_PROGRESS", pageRequest);
+
+    return userMissions.map(UserMissionListResponse::from);
   }
 }
