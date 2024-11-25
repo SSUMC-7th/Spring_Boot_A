@@ -40,6 +40,7 @@ public class ReviewController {
   public ApiResponse<Page<ReviewListResponse>> getUserReviews(
       @CheckPage @RequestParam(name = "page") Integer page,
       @RequestParam(name = "userId") Long userId) {
+
     int zeroBasedPage = PageValidator.adjustPage(page);
     PageRequest pageRequest = PageRequest.of(zeroBasedPage, 10);
 
