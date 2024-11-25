@@ -1,5 +1,6 @@
 package umc.study.service.storeService;
 
+import org.springframework.data.domain.Page;
 import umc.study.domain.Mission;
 import umc.study.domain.Store;
 import umc.study.web.dto.MissionRequestDTO;
@@ -14,4 +15,5 @@ public interface StoreQueryService {
     List<Store> findStoresByNameAndScore(String name, Float score);
     Mission addMission(MissionRequestDTO.MissionDTO request);
     Review addReview(ReviewRequestDTO.CreateReviewDTO requestDTO);
+    Page<Review> getReviewList(Long StoreId, Integer page);
 }

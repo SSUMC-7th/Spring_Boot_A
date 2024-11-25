@@ -1,6 +1,8 @@
 package umc.study.service.storeService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.apiPayload.code.status.ErrorStatus;
@@ -51,19 +53,22 @@ public class StoreQueryServiceImpl implements StoreQueryService {
 
     @Override
     @Transactional
-
     public Mission addMission(MissionRequestDTO.MissionDTO request) {
         Store store = storeRepository.findById(request.getStoreId())
                 .orElseThrow(() -> new StoreHandler(ErrorStatus.STORE_NOT_FOUND));
-        Mission newMission = MissionConverter.toMission(request,store);
+        Mission newMission = MissionConverter.toMission(request, store);
         List<Member> memberList = request.getMemberMissions().stream()
-                .map( member -> { return memberRepository.findById(member).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));})
+                .map(member -> {
+                    return memberRepository.findById(member).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+                })
                 .collect(Collectors.toList());
 
         List<MemberMission> memberMissions = MemberMissionConverter.toMemberMission(memberList);
-        memberMissions.forEach( memberMission -> {memberMission.setMission(newMission);});
+        memberMissions.forEach(memberMission -> {
+            memberMission.setMission(newMission);
+        });
         return missionRepository.save(newMission);
-  
+    }
     @Override
     @Transactional
     public Review addReview(ReviewRequestDTO.CreateReviewDTO requestDTO) {
@@ -75,5 +80,12 @@ public class StoreQueryServiceImpl implements StoreQueryService {
         newReview.setMember(member);
         reviewRepository.save(newReview);
         return newReview;
+    }
+
+    @Override
+    public Page<Review> getReviewList(Long storeId, Integer page) {
+        Store store = storeRepository.findById(storeId).orElseThrow(() -> new StoreHandler(ErrorStatus.STORE_NOT_FOUND));
+        Page<Review> storePage = reviewRepository.findAllByStore(store, PageRequest.of(page,10));
+        return storePage;
     }
 }
