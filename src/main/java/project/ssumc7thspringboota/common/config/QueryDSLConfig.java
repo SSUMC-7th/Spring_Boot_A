@@ -1,4 +1,4 @@
-package project.ssumc7thspringboota.config;
+package project.ssumc7thspringboota.common.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

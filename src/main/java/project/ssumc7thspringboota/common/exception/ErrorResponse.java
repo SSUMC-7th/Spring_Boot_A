@@ -1,4 +1,4 @@
-package project.ssumc7thspringboota.exception;
+package project.ssumc7thspringboota.common.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

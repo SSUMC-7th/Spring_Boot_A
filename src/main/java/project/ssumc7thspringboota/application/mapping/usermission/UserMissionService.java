@@ -11,8 +11,8 @@ import project.ssumc7thspringboota.domain.mission.Mission;
 import project.ssumc7thspringboota.domain.mission.repository.MissionRepository;
 import project.ssumc7thspringboota.domain.user.User;
 import project.ssumc7thspringboota.domain.user.repository.UserRepository;
-import project.ssumc7thspringboota.exception.BusinessException;
-import project.ssumc7thspringboota.exception.ErrorCode;
+import project.ssumc7thspringboota.common.exception.BusinessException;
+import project.ssumc7thspringboota.common.exception.ErrorCode;
 
 @Service
 @RequiredArgsConstructor

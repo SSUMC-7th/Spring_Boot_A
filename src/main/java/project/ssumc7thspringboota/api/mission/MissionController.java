@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import project.ssumc7thspringboota.annotation.CheckPage;
+import project.ssumc7thspringboota.common.annotation.CheckPage;
 import project.ssumc7thspringboota.api.ApiResponse;
 import project.ssumc7thspringboota.api.mission.request.MissionCreateRequest;
 import project.ssumc7thspringboota.application.mission.MissionService;

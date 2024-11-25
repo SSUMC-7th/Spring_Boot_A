@@ -1,4 +1,4 @@
-package project.ssumc7thspringboota.config;
+package project.ssumc7thspringboota.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

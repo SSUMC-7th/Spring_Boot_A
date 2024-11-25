@@ -1,4 +1,4 @@
-package project.ssumc7thspringboota.annotation;
+package project.ssumc7thspringboota.common.annotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -7,7 +7,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import project.ssumc7thspringboota.annotation.implement.PageValidator;
+import project.ssumc7thspringboota.common.annotation.implement.PageValidator;
 
 @Constraint(validatedBy = PageValidator.class)
 @Target({ElementType.PARAMETER})

@@ -1,10 +1,10 @@
-package project.ssumc7thspringboota.annotation.implement;
+package project.ssumc7thspringboota.common.annotation.implement;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import project.ssumc7thspringboota.annotation.CheckPage;
-import project.ssumc7thspringboota.exception.BusinessException;
-import project.ssumc7thspringboota.exception.ErrorCode;
+import project.ssumc7thspringboota.common.annotation.CheckPage;
+import project.ssumc7thspringboota.common.exception.BusinessException;
+import project.ssumc7thspringboota.common.exception.ErrorCode;
 
 public class PageValidator implements ConstraintValidator<CheckPage, Integer> {
 
