@@ -55,15 +55,19 @@ public class StoreQueryServiceImpl implements StoreQueryService {
     public Mission addMission(MissionRequestDTO.MissionDTO request) {
         Store store = storeRepository.findById(request.getStoreId())
                 .orElseThrow(() -> new StoreHandler(ErrorStatus.STORE_NOT_FOUND));
-        Mission newMission = MissionConverter.toMission(request,store);
+        Mission newMission = MissionConverter.toMission(request, store);
         List<Member> memberList = request.getMemberMissions().stream()
-                .map( member -> { return memberRepository.findById(member).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));})
+                .map(member -> {
+                    return memberRepository.findById(member).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+                })
                 .collect(Collectors.toList());
 
         List<MemberMission> memberMissions = MemberMissionConverter.toMemberMission(memberList);
-        memberMissions.forEach( memberMission -> {memberMission.setMission(newMission);});
+        memberMissions.forEach(memberMission -> {
+            memberMission.setMission(newMission);
+        });
         return missionRepository.save(newMission);
-  
+    }
     @Override
     @Transactional
     public Review addReview(ReviewRequestDTO.CreateReviewDTO requestDTO) {

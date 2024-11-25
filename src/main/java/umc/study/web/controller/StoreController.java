@@ -29,7 +29,7 @@ public class StoreController {
             @RequestBody @Valid MissionRequestDTO.MissionDTO missionDTO) {
         Mission newMission = storeQueryService.addMission(missionDTO);
         return ApiResponse.onSuccess(MissionConverter.toResultMission(newMission));
-      
+    }
     @PostMapping("/reviews")
     public ApiResponse<ReviewResponseDTO.ReviewDTO> addReview(@RequestBody @Valid ReviewRequestDTO.CreateReviewDTO review) {
         Review newReview = storeQueryService.addReview(review);
