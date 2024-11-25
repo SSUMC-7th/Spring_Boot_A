@@ -90,6 +90,8 @@ public class StoreQueryServiceImpl implements StoreQueryService {
 
     @Override
     public Page<Mission> getMissionList(Long storeId, Integer page){
-        return null;
+        Store store = storeRepository.findById(storeId).orElseThrow(() -> new StoreHandler(ErrorStatus.STORE_NOT_FOUND));
+        Page<Mission> storePage = missionRepository.findAllByStore(store, PageRequest.of(page,10));
+        return storePage;
     }
 }
