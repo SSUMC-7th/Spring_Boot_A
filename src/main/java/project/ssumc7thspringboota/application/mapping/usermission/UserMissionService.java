@@ -15,7 +15,6 @@ import project.ssumc7thspringboota.exception.BusinessException;
 import project.ssumc7thspringboota.exception.ErrorCode;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class UserMissionService {
 

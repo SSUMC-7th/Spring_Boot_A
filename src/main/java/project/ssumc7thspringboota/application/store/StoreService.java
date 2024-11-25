@@ -14,7 +14,6 @@ import project.ssumc7thspringboota.domain.store.Store;
 import project.ssumc7thspringboota.domain.store.repository.StoreRepository;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class StoreService {
 
