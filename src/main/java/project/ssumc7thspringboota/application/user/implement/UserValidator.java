@@ -3,10 +3,9 @@ package project.ssumc7thspringboota.application.user.implement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import project.ssumc7thspringboota.domain.user.User;
 import project.ssumc7thspringboota.domain.user.repository.UserRepository;
-import project.ssumc7thspringboota.exception.BusinessException;
-import project.ssumc7thspringboota.exception.ErrorCode;
+import project.ssumc7thspringboota.common.exception.BusinessException;
+import project.ssumc7thspringboota.common.exception.ErrorCode;
 
 @Component
 @RequiredArgsConstructor

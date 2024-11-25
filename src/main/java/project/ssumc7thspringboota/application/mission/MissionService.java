@@ -12,8 +12,8 @@ import project.ssumc7thspringboota.domain.mission.Mission;
 import project.ssumc7thspringboota.domain.mission.repository.MissionRepository;
 import project.ssumc7thspringboota.domain.store.Store;
 import project.ssumc7thspringboota.domain.store.repository.StoreRepository;
-import project.ssumc7thspringboota.exception.BusinessException;
-import project.ssumc7thspringboota.exception.ErrorCode;
+import project.ssumc7thspringboota.common.exception.BusinessException;
+import project.ssumc7thspringboota.common.exception.ErrorCode;
 
 @Service
 @Transactional(readOnly = true)
