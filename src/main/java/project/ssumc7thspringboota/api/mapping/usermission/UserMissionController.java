@@ -1,5 +1,7 @@
 package project.ssumc7thspringboota.api.mapping.usermission;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +16,12 @@ import project.ssumc7thspringboota.application.mapping.usermission.response.User
 @RestController
 @RequestMapping("/usermissions")
 @RequiredArgsConstructor
+@Tag(name = "유저의 미션을 관리하는 기능", description = "유저 미션 관리 API 입니다.")
 public class UserMissionController {
 
   private final UserMissionService userMissionService;
 
+  @Operation(summary = "도전 중인 미션에 추가하는 API")
   @PostMapping
   public ApiResponse<UserMissionCreateResponse> createUserMission(@Valid @RequestBody UserMissionCreateRequest request) {
     UserMissionCreateResponse response = userMissionService.createUserMission(request.toServiceRequest());

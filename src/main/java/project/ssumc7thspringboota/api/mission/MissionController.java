@@ -1,5 +1,7 @@
 package project.ssumc7thspringboota.api.mission;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +16,12 @@ import project.ssumc7thspringboota.application.mission.response.MissionCreateRes
 @RestController
 @RequestMapping("/missions")
 @RequiredArgsConstructor
+@Tag(name = "미션 관리 기능", description = "미션 관리 API 입니다.")
 public class MissionController {
 
   private final MissionService missionService;
 
+  @Operation(summary = "미션을 추가하는 API")
   @PostMapping
   public ApiResponse<MissionCreateResponse> createMission(@Valid @RequestBody MissionCreateRequest request) {
     MissionCreateResponse response = missionService.createMission(request.toServiceRequest());
