@@ -1,0 +1,38 @@
+package project.ssumc7thspringboota.application.user.implement;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+import project.ssumc7thspringboota.domain.user.User;
+import project.ssumc7thspringboota.domain.user.repository.UserRepository;
+import project.ssumc7thspringboota.exception.BusinessException;
+import project.ssumc7thspringboota.exception.ErrorCode;
+
+@Component
+@RequiredArgsConstructor
+public class UserValidator {
+
+  private final UserRepository userRepository;
+  private final PasswordEncoder passwordEncoder;
+
+//  public User validateUserAndPassword(String email, String rawPassword) {
+//    User user = userRepository.findByEmail(email)
+//                              .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
+//
+//    if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
+//      throw new BusinessException(ErrorCode.WRONG_PASSWORD);
+//    }
+//
+//    return user;
+//  }
+
+  public void checkDuplicateEmail(String email) {
+    if (userRepository.findByEmail(email).isPresent()) {
+      throw new BusinessException(ErrorCode.DUPLICATE_EMAIL);
+    }
+  }
+
+//  public String encodePassword(String rawPassword) {
+//    return passwordEncoder.encode(rawPassword);
+//  }
+}

@@ -11,6 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.Set;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
@@ -42,4 +43,14 @@ public class Review extends BaseEntity {
 
   @OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
   private Set<ReviewPhoto> reviewPhotos;
+
+  @Builder
+  private Review(User user, Store store, Double rating, String reviewText,
+      Set<ReviewPhoto> reviewPhotos) {
+    this.user = user;
+    this.store = store;
+    this.rating = rating;
+    this.reviewText = reviewText;
+    this.reviewPhotos = reviewPhotos;
+  }
 }

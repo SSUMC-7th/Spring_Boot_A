@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
@@ -37,4 +38,15 @@ public class UserMission extends BaseEntity {
   private LocalDateTime startedAt;
 
   private LocalDateTime completedAt;
+
+  @Builder
+  private UserMission(User user, Mission mission, String status, LocalDateTime startedAt,
+      LocalDateTime completedAt) {
+    this.user = user;
+    this.mission = mission;
+    this.status = status;
+    this.startedAt = startedAt;
+    this.completedAt = completedAt;
+  }
 }
+

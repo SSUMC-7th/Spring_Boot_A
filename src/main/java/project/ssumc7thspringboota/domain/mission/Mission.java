@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.Set;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import project.ssumc7thspringboota.domain.BaseEntity;
@@ -35,4 +36,12 @@ public class Mission extends BaseEntity {
 
   @OneToMany(mappedBy = "mission", fetch = FetchType.LAZY)
   private Set<UserMission> userMissions;
+
+  @Builder
+  private Mission(Store store, Integer rewardPoints, String description) {
+    this.store = store;
+    this.rewardPoints = rewardPoints;
+    this.description = description;
+  }
 }
+

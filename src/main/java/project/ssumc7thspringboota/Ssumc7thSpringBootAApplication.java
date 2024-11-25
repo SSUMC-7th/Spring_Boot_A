@@ -16,23 +16,23 @@ public class Ssumc7thSpringBootAApplication {
     SpringApplication.run(Ssumc7thSpringBootAApplication.class, args);
   }
 
-  @Bean
-  public CommandLineRunner run(ApplicationContext context) {
-    return args -> {
-      StoreQueryService storeService = context.getBean(StoreQueryService.class);
-
-      // 파라미터 값 설정
-      String name = "Store 1";
-      Double overallRating = 4.0;
-
-      // 쿼리 메서드 호출 및 쿼리 문자열과 파라미터 출력
-      System.out.println("Executing findStoresByNameAndRating with parameters:");
-      System.out.println("Name: " + name);
-      System.out.println("Overall Rating: " + overallRating);
-
-      // StoreQueryService의 메서드 호출하여 결과 출력
-      storeService.findStoresByNameAndRating(name, overallRating)
-                  .forEach(System.out::println);
-    };
-  }
+//  @Bean
+//  public CommandLineRunner run(ApplicationContext context) {
+//    return args -> {
+//      StoreQueryService storeService = context.getBean(StoreQueryService.class);
+//
+//      // 파라미터 값 설정
+//      String name = "Store 1";
+//      Double overallRating = 4.0;
+//
+//      // 쿼리 메서드 호출 및 쿼리 문자열과 파라미터 출력
+//      System.out.println("Executing findStoresByNameAndRating with parameters:");
+//      System.out.println("Name: " + name);
+//      System.out.println("Overall Rating: " + overallRating);
+//
+//      // StoreQueryService의 메서드 호출하여 결과 출력
+//      storeService.findStoresByNameAndRating(name, overallRating)
+//                  .forEach(System.out::println);
+//    };
+//  }
 }
