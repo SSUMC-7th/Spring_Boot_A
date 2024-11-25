@@ -19,6 +19,6 @@ public class user_favorite {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private user user_id;
+    private user user;
 
 }

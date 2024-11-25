@@ -29,9 +29,9 @@ public class user_review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private user user_id;
+    private user user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
-    private restaurant restaurant_id;
+    private restaurant restaurant;
 }

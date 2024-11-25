@@ -37,10 +37,10 @@ public class restaurant {
     @Column(nullable = false)
     private LocalTime close;
 
-    @OneToMany(mappedBy = "restaurant_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<mission> missionList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "restaurant_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<user_review> user_reviewList = new ArrayList<>();
     @Override
     public String toString() {

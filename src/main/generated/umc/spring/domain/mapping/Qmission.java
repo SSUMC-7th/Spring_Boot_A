@@ -28,7 +28,7 @@ public class Qmission extends EntityPathBase<mission> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final umc.spring.domain.Qrestaurant restaurant_id;
+    public final umc.spring.domain.Qrestaurant restaurant;
 
     public final NumberPath<Long> reward = createNumber("reward", Long.class);
 
@@ -52,7 +52,7 @@ public class Qmission extends EntityPathBase<mission> {
 
     public Qmission(Class<? extends mission> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.restaurant_id = inits.isInitialized("restaurant_id") ? new umc.spring.domain.Qrestaurant(forProperty("restaurant_id")) : null;
+        this.restaurant = inits.isInitialized("restaurant") ? new umc.spring.domain.Qrestaurant(forProperty("restaurant")) : null;
     }
 
 }

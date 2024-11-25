@@ -16,14 +16,14 @@ public class user_mission {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'Challengeable'")
-    private MissionCheck mission_check;
+    @Column(name = "mission_check", columnDefinition = "VARCHAR(15) DEFAULT 'Challengeable'")
+    private MissionCheck missioncheck;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private user user_id;
+    private user user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
-    private mission mission_id;
+    private mission mission;
 }

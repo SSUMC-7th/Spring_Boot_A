@@ -24,11 +24,11 @@ public class Quser_mission extends EntityPathBase<user_mission> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final EnumPath<umc.spring.domain.enums.MissionCheck> mission_check = createEnum("mission_check", umc.spring.domain.enums.MissionCheck.class);
+    public final Qmission mission;
 
-    public final Qmission mission_id;
+    public final EnumPath<umc.spring.domain.enums.MissionCheck> missioncheck = createEnum("missioncheck", umc.spring.domain.enums.MissionCheck.class);
 
-    public final umc.spring.domain.Quser user_id;
+    public final umc.spring.domain.Quser user;
 
     public Quser_mission(String variable) {
         this(user_mission.class, forVariable(variable), INITS);
@@ -48,8 +48,8 @@ public class Quser_mission extends EntityPathBase<user_mission> {
 
     public Quser_mission(Class<? extends user_mission> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.mission_id = inits.isInitialized("mission_id") ? new Qmission(forProperty("mission_id"), inits.get("mission_id")) : null;
-        this.user_id = inits.isInitialized("user_id") ? new umc.spring.domain.Quser(forProperty("user_id")) : null;
+        this.mission = inits.isInitialized("mission") ? new Qmission(forProperty("mission"), inits.get("mission")) : null;
+        this.user = inits.isInitialized("user") ? new umc.spring.domain.Quser(forProperty("user")) : null;
     }
 
 }

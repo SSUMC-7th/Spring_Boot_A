@@ -26,7 +26,7 @@ public class Quser_favorite extends EntityPathBase<user_favorite> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final umc.spring.domain.Quser user_id;
+    public final umc.spring.domain.Quser user;
 
     public Quser_favorite(String variable) {
         this(user_favorite.class, forVariable(variable), INITS);
@@ -46,7 +46,7 @@ public class Quser_favorite extends EntityPathBase<user_favorite> {
 
     public Quser_favorite(Class<? extends user_favorite> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.user_id = inits.isInitialized("user_id") ? new umc.spring.domain.Quser(forProperty("user_id")) : null;
+        this.user = inits.isInitialized("user") ? new umc.spring.domain.Quser(forProperty("user")) : null;
     }
 
 }
