@@ -1,6 +1,5 @@
 package project.ssumc7thspringboota.application.review;
 
-import java.util.List;
 import java.util.Set;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,7 +23,6 @@ import project.ssumc7thspringboota.exception.BusinessException;
 import project.ssumc7thspringboota.exception.ErrorCode;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class ReviewService {
 
@@ -59,6 +57,7 @@ public class ReviewService {
     return ReviewCreateResponse.from(savedReview);
   }
 
+  @Transactional
   public Page<ReviewListResponse> getUserReviews(Long userId, PageRequest pageRequest) {
     User user = userRepository.findById(userId)
                               .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));

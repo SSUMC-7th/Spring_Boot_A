@@ -15,7 +15,6 @@ import project.ssumc7thspringboota.domain.user.User;
 import project.ssumc7thspringboota.domain.user.repository.UserRepository;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class UserService {
 
