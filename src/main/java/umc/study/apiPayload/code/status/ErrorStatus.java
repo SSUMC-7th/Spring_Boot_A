@@ -27,7 +27,7 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // Store Error
     STORE_NOT_FOUND(HttpStatus.NOT_FOUND,"STORE4001","해당 가게가 없습니다."),
-
+  
     // For test
     TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트");
 
