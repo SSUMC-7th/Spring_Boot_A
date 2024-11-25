@@ -3,13 +3,15 @@ package project.ssumc7thspringboota.annotation.implement;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import project.ssumc7thspringboota.annotation.CheckPage;
+import project.ssumc7thspringboota.exception.BusinessException;
+import project.ssumc7thspringboota.exception.ErrorCode;
 
 public class PageValidator implements ConstraintValidator<CheckPage, Integer> {
 
   @Override
   public boolean isValid(Integer value, ConstraintValidatorContext context) {
     if (value == null || value < 1) {
-      return false;
+      throw new BusinessException(ErrorCode.INVALID_PAGE);
     }
     return true;
   }
