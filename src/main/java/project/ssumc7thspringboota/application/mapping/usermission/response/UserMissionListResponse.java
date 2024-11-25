@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Builder
 public class UserMissionListResponse {
 
-  private final Long missionId;
+  private final Long userMissionId;
   private final String missionDescription;
   private final String status;
   private final LocalDateTime startedAt;
@@ -18,7 +18,7 @@ public class UserMissionListResponse {
 
   public static UserMissionListResponse from(UserMission userMission) {
     return UserMissionListResponse.builder()
-                                  .missionId(userMission.getMission().getId())
+                                  .userMissionId(userMission.getMission().getId())
                                   .missionDescription(userMission.getMission().getDescription())
                                   .status(userMission.getStatus())
                                   .startedAt(userMission.getStartedAt())

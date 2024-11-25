@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import project.ssumc7thspringboota.api.ApiResponse;
 import project.ssumc7thspringboota.api.mapping.usermission.request.UserMissionCreateRequest;
 import project.ssumc7thspringboota.application.mapping.usermission.UserMissionService;
+import project.ssumc7thspringboota.application.mapping.usermission.response.UserMissionCompleteResponse;
 import project.ssumc7thspringboota.application.mapping.usermission.response.UserMissionCreateResponse;
 import project.ssumc7thspringboota.application.mapping.usermission.response.UserMissionListResponse;
 import project.ssumc7thspringboota.common.annotation.CheckPage;
@@ -47,5 +48,12 @@ public class UserMissionController {
 
     Page<UserMissionListResponse> userMissions = userMissionService.getUserInProgressMissions(userId, pageRequest);
     return ApiResponse.OK(userMissions);
+  }
+
+  @Operation(summary = "유저가 진행 중인 미션 완료 API")
+  @PostMapping("/complete")
+  public ApiResponse<UserMissionCompleteResponse> completeUserMission(@RequestParam Long userMissionId) {
+    UserMissionCompleteResponse response = userMissionService.completeUserMission(userMissionId);
+    return ApiResponse.OK(response);
   }
 }

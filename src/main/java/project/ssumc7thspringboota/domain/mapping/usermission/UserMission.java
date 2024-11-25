@@ -48,5 +48,10 @@ public class UserMission extends BaseEntity {
     this.startedAt = startedAt;
     this.completedAt = completedAt;
   }
+
+  public void completeMission() {
+    this.status = "COMPLETED";
+    this.completedAt = LocalDateTime.now();
+  }
 }
 
