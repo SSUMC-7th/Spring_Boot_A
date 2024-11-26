@@ -10,7 +10,4 @@ public class UserMissionCreateServiceRequest {
 
   private final Long userId;
   private final Long missionId;
-  private final String status;
-  private final LocalDateTime startedAt;
-  private final LocalDateTime completedAt;
 }

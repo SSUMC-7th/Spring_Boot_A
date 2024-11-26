@@ -1,16 +1,19 @@
 package project.ssumc7thspringboota.application.mission;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.ssumc7thspringboota.application.mission.request.MissionCreateServiceRequest;
 import project.ssumc7thspringboota.application.mission.response.MissionCreateResponse;
+import project.ssumc7thspringboota.application.mission.response.MissionListResponse;
 import project.ssumc7thspringboota.domain.mission.Mission;
 import project.ssumc7thspringboota.domain.mission.repository.MissionRepository;
 import project.ssumc7thspringboota.domain.store.Store;
 import project.ssumc7thspringboota.domain.store.repository.StoreRepository;
-import project.ssumc7thspringboota.exception.BusinessException;
-import project.ssumc7thspringboota.exception.ErrorCode;
+import project.ssumc7thspringboota.common.exception.BusinessException;
+import project.ssumc7thspringboota.common.exception.ErrorCode;
 
 @Service
 @Transactional(readOnly = true)
@@ -34,5 +37,15 @@ public class MissionService {
     Mission savedMission = missionRepository.save(mission);
 
     return MissionCreateResponse.from(savedMission);
+  }
+
+  @Transactional
+  public Page<MissionListResponse> getMissionsByStore(Long storeId, PageRequest pageRequest) {
+    Store store = storeRepository.findById(storeId)
+                                 .orElseThrow(() -> new BusinessException(ErrorCode.STORE_NOT_FOUND));
+
+    Page<Mission> missions = missionRepository.findByStoreId(store.getId(), pageRequest);
+
+    return missions.map(MissionListResponse::from);
   }
 }
