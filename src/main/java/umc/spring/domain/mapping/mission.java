@@ -29,8 +29,8 @@ public class mission {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
-    private restaurant restaurant_id;
+    private restaurant restaurant;
 
-    @OneToMany(mappedBy = "mission_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
     private List<user_mission> user_reviewList = new ArrayList<>();
 }

@@ -30,9 +30,9 @@ public class Quser_review extends EntityPathBase<user_review> {
 
     public final NumberPath<Long> rating = createNumber("rating", Long.class);
 
-    public final umc.spring.domain.Qrestaurant restaurant_id;
+    public final umc.spring.domain.Qrestaurant restaurant;
 
-    public final umc.spring.domain.Quser user_id;
+    public final umc.spring.domain.Quser user;
 
     public Quser_review(String variable) {
         this(user_review.class, forVariable(variable), INITS);
@@ -52,8 +52,8 @@ public class Quser_review extends EntityPathBase<user_review> {
 
     public Quser_review(Class<? extends user_review> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.restaurant_id = inits.isInitialized("restaurant_id") ? new umc.spring.domain.Qrestaurant(forProperty("restaurant_id")) : null;
-        this.user_id = inits.isInitialized("user_id") ? new umc.spring.domain.Quser(forProperty("user_id")) : null;
+        this.restaurant = inits.isInitialized("restaurant") ? new umc.spring.domain.Qrestaurant(forProperty("restaurant")) : null;
+        this.user = inits.isInitialized("user") ? new umc.spring.domain.Quser(forProperty("user")) : null;
     }
 
 }
