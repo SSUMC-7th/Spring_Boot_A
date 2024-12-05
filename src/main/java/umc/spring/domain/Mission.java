@@ -2,8 +2,10 @@ package umc.spring.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.spring.domain.enums.Status;
+import umc.spring.domain.common.BaseEntity;
+import umc.spring.domain.mapping.MemberMission;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,32 +14,23 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Mission {
+public class Mission extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean isSuccess;
+    private Integer reward;
 
-    @Column(nullable = false, length = 100)
-    private String content;
+    private LocalDate deadline;
 
-    private Integer code;
+    @Column(nullable = false, length = 200)
+    private String missionSpec;
 
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(10) DEFAULT 'ACTIVE'")
-    private Status status;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
-
-    @ManyToOne
-    @JoinColumn(name = "region_id")
-    private Region region;
-
-    @ManyToOne
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
+    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
+    private List<MemberMission> memberMissionList = new ArrayList<>();
 }

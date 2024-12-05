@@ -22,21 +22,25 @@ public class QMission extends EntityPathBase<Mission> {
 
     public static final QMission mission = new QMission("mission");
 
-    public final NumberPath<Integer> code = createNumber("code", Integer.class);
+    public final umc.spring.domain.common.QBaseEntity _super = new umc.spring.domain.common.QBaseEntity(this);
 
-    public final StringPath content = createString("content");
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
+
+    public final DatePath<java.time.LocalDate> deadline = createDate("deadline", java.time.LocalDate.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final BooleanPath isSuccess = createBoolean("isSuccess");
+    public final ListPath<umc.spring.domain.mapping.MemberMission, umc.spring.domain.mapping.QMemberMission> memberMissionList = this.<umc.spring.domain.mapping.MemberMission, umc.spring.domain.mapping.QMemberMission>createList("memberMissionList", umc.spring.domain.mapping.MemberMission.class, umc.spring.domain.mapping.QMemberMission.class, PathInits.DIRECT2);
 
-    public final QMember member;
+    public final StringPath missionSpec = createString("missionSpec");
 
-    public final QRegion region;
+    public final NumberPath<Integer> reward = createNumber("reward", Integer.class);
 
-    public final QRestaurant restaurant;
+    public final QStore store;
 
-    public final EnumPath<umc.spring.domain.enums.Status> status = createEnum("status", umc.spring.domain.enums.Status.class);
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
 
     public QMission(String variable) {
         this(Mission.class, forVariable(variable), INITS);
@@ -56,9 +60,7 @@ public class QMission extends EntityPathBase<Mission> {
 
     public QMission(Class<? extends Mission> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.member = inits.isInitialized("member") ? new QMember(forProperty("member")) : null;
-        this.region = inits.isInitialized("region") ? new QRegion(forProperty("region")) : null;
-        this.restaurant = inits.isInitialized("restaurant") ? new QRestaurant(forProperty("restaurant"), inits.get("restaurant")) : null;
+        this.store = inits.isInitialized("store") ? new QStore(forProperty("store"), inits.get("store")) : null;
     }
 
 }
