@@ -3,13 +3,11 @@ package umc.spring.apiPayload.code.status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
-import umc.spring.apiPayload.code.BaseCode;
 import umc.spring.apiPayload.code.BaseErrorCode;
 import umc.spring.apiPayload.code.ErrorReasonDTO;
 
 @Getter
 @AllArgsConstructor
-
 public enum ErrorStatus implements BaseErrorCode {
 
     // 가장 일반적인 응답
@@ -26,8 +24,12 @@ public enum ErrorStatus implements BaseErrorCode {
     // 예시,,,
     ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "ARTICLE4001", "게시글이 없습니다."),
 
+    // 음식 카테고리 관련 에러
+    FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FOOD4001", "음식 카테고리를 찾을 수 없습니다."),
+
     // For test
     TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트");
+
 
     private final HttpStatus httpStatus;
     private final String code;

@@ -27,17 +27,9 @@ public class QRegion extends EntityPathBase<Region> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final BooleanPath isRewarded = createBoolean("isRewarded");
-
-    public final ListPath<Mission, QMission> MissionList = this.<Mission, QMission>createList("MissionList", Mission.class, QMission.class, PathInits.DIRECT2);
-
     public final StringPath name = createString("name");
 
-    public final ListPath<Restaurant, QRestaurant> RestaurantList = this.<Restaurant, QRestaurant>createList("RestaurantList", Restaurant.class, QRestaurant.class, PathInits.DIRECT2);
-
-    public final ListPath<Review, QReview> ReviewList = this.<Review, QReview>createList("ReviewList", Review.class, QReview.class, PathInits.DIRECT2);
-
-    public final NumberPath<Integer> successNumber = createNumber("successNumber", Integer.class);
+    public final ListPath<Store, QStore> storeList = this.<Store, QStore>createList("storeList", Store.class, QStore.class, PathInits.DIRECT2);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;

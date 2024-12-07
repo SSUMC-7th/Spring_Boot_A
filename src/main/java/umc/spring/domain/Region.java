@@ -3,6 +3,7 @@ package umc.spring.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
+import umc.spring.domain.mapping.MemberMission;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +22,7 @@ public class Region extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
-    private Integer successNumber;
-
-    private boolean isRewarded;
-
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
-    private List<Mission> MissionList = new ArrayList<>();
+    private List<Store> storeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
-    private List<Review> ReviewList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
-    private List<Restaurant> RestaurantList = new ArrayList<>();
 }

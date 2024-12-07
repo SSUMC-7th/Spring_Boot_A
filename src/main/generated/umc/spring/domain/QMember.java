@@ -24,12 +24,10 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath address = createString("address");
 
-    public final DatePath<java.time.LocalDate> birth = createDate("birth", java.time.LocalDate.class);
-
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
-    public final StringPath favoriteFood = createString("favoriteFood");
+    public final StringPath email = createString("email");
 
     public final EnumPath<umc.spring.domain.enums.Gender> gender = createEnum("gender", umc.spring.domain.enums.Gender.class);
 
@@ -37,15 +35,27 @@ public class QMember extends EntityPathBase<Member> {
 
     public final DatePath<java.time.LocalDate> inactiveDate = createDate("inactiveDate", java.time.LocalDate.class);
 
-    public final ListPath<Mission, QMission> MissionList = this.<Mission, QMission>createList("MissionList", Mission.class, QMission.class, PathInits.DIRECT2);
+    public final ListPath<umc.spring.domain.mapping.MemberAgree, umc.spring.domain.mapping.QMemberAgree> memberAgreeList = this.<umc.spring.domain.mapping.MemberAgree, umc.spring.domain.mapping.QMemberAgree>createList("memberAgreeList", umc.spring.domain.mapping.MemberAgree.class, umc.spring.domain.mapping.QMemberAgree.class, PathInits.DIRECT2);
+
+    public final ListPath<umc.spring.domain.mapping.MemberMission, umc.spring.domain.mapping.QMemberMission> memberMissionList = this.<umc.spring.domain.mapping.MemberMission, umc.spring.domain.mapping.QMemberMission>createList("memberMissionList", umc.spring.domain.mapping.MemberMission.class, umc.spring.domain.mapping.QMemberMission.class, PathInits.DIRECT2);
+
+    public final ListPath<umc.spring.domain.mapping.MemberPrefer, umc.spring.domain.mapping.QMemberPrefer> memberPreferList = this.<umc.spring.domain.mapping.MemberPrefer, umc.spring.domain.mapping.QMemberPrefer>createList("memberPreferList", umc.spring.domain.mapping.MemberPrefer.class, umc.spring.domain.mapping.QMemberPrefer.class, PathInits.DIRECT2);
 
     public final StringPath name = createString("name");
 
+    public final StringPath password = createString("password");
+
     public final NumberPath<Integer> point = createNumber("point", Integer.class);
 
-    public final ListPath<Review, QReview> ReviewList = this.<Review, QReview>createList("ReviewList", Review.class, QReview.class, PathInits.DIRECT2);
+    public final ListPath<Review, QReview> reviewList = this.<Review, QReview>createList("reviewList", Review.class, QReview.class, PathInits.DIRECT2);
 
-    public final EnumPath<umc.spring.domain.enums.Status> status = createEnum("status", umc.spring.domain.enums.Status.class);
+    public final EnumPath<umc.spring.domain.enums.Role> role = createEnum("role", umc.spring.domain.enums.Role.class);
+
+    public final EnumPath<umc.spring.domain.enums.SocialType> SocialType = createEnum("SocialType", umc.spring.domain.enums.SocialType.class);
+
+    public final StringPath specAddress = createString("specAddress");
+
+    public final EnumPath<umc.spring.domain.enums.MemberStatus> status = createEnum("status", umc.spring.domain.enums.MemberStatus.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
