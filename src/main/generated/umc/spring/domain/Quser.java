@@ -34,9 +34,13 @@ public class Quser extends EntityPathBase<user> {
 
     public final StringPath name = createString("name");
 
+    public final StringPath password = createString("password");
+
     public final StringPath phone_num = createString("phone_num");
 
     public final NumberPath<Long> point = createNumber("point", Long.class);
+
+    public final EnumPath<umc.spring.domain.enums.Role> role = createEnum("role", umc.spring.domain.enums.Role.class);
 
     public final ListPath<umc.spring.domain.mapping.user_favorite, umc.spring.domain.mapping.Quser_favorite> user_favoriteList = this.<umc.spring.domain.mapping.user_favorite, umc.spring.domain.mapping.Quser_favorite>createList("user_favoriteList", umc.spring.domain.mapping.user_favorite.class, umc.spring.domain.mapping.Quser_favorite.class, PathInits.DIRECT2);
 
