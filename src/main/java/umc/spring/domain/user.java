@@ -3,6 +3,7 @@ package umc.spring.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.enums.Gender;
+import umc.spring.domain.enums.Role;
 import umc.spring.domain.mapping.mission;
 import umc.spring.domain.mapping.user_favorite;
 import umc.spring.domain.mapping.user_mission;
@@ -36,16 +37,22 @@ public class user {
     @Column(nullable = false, length = 100)
     private String address;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false,length = 255)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @Column(length = 20)
     private String phone_num;
 
-    @Column(nullable = false)
+    @Column()
     private Long mission_count;
 
-    @Column(nullable = false)
+    @Column()
     private Long point;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -56,4 +63,8 @@ public class user {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<user_review> user_reviewList = new ArrayList<>();
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
 }
