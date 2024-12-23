@@ -1,17 +1,19 @@
 package umc.study.service.memberMissionService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.converter.MemberMissionConverter;
 import umc.study.domain.Member;
 import umc.study.domain.Mission;
+import umc.study.domain.enums.MissionStatus;
 import umc.study.domain.mapping.MemberMission;
 import umc.study.repository.memberMissionRepository.MemberMissionRepository;
 import umc.study.repository.memberRepository.MemberRepository;
 import umc.study.repository.missionRepository.MissionRepository;
 import umc.study.web.dto.ChallengeMissionRequestDTO;
-import umc.study.web.dto.ChallengeMissionResponseDTO;
 
 @Service
 @RequiredArgsConstructor
@@ -39,5 +41,11 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
 
         // Convert Entity to Response DTO
         return memberMission;
+    }
+
+    @Override
+    public Slice<MemberMission> getMemberMissions(Long memberId,Pageable pageable) {
+        Slice<MemberMission> allByMemberIdAndStatus = memberMissionRepository.findAllByMemberIdAndStatus(memberId,MissionStatus.CHALLENGING, pageable);
+        return allByMemberIdAndStatus;
     }
 }
