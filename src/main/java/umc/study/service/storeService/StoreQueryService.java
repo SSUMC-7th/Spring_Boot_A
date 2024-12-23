@@ -15,5 +15,6 @@ public interface StoreQueryService {
     List<Store> findStoresByNameAndScore(String name, Float score);
     Mission addMission(MissionRequestDTO.MissionDTO request);
     Review addReview(ReviewRequestDTO.CreateReviewDTO requestDTO);
-    Page<Review> getReviewList(Long StoreId, Integer page);
+    Page<Review> getReviewList(Long storeId, Integer page);
+    Page<Mission> getMissionList(Long storeId, Integer page);
 }

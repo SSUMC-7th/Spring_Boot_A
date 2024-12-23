@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import umc.study.apiPayload.code.status.ErrorStatus;
 import umc.study.apiPayload.exception.handler.MemberHandler;
 import umc.study.apiPayload.exception.handler.StoreHandler;
-import umc.study.converter.MemberConverter;
 import umc.study.converter.MemberMissionConverter;
 import umc.study.converter.MissionConverter;
 import umc.study.converter.ReviewConverter;
@@ -86,6 +85,13 @@ public class StoreQueryServiceImpl implements StoreQueryService {
     public Page<Review> getReviewList(Long storeId, Integer page) {
         Store store = storeRepository.findById(storeId).orElseThrow(() -> new StoreHandler(ErrorStatus.STORE_NOT_FOUND));
         Page<Review> storePage = reviewRepository.findAllByStore(store, PageRequest.of(page,10));
+        return storePage;
+    }
+
+    @Override
+    public Page<Mission> getMissionList(Long storeId, Integer page){
+        Store store = storeRepository.findById(storeId).orElseThrow(() -> new StoreHandler(ErrorStatus.STORE_NOT_FOUND));
+        Page<Mission> storePage = missionRepository.findAllByStore(store, PageRequest.of(page,10));
         return storePage;
     }
 }

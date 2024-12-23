@@ -1,6 +1,8 @@
 package umc.study.web.dto;
 
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,6 +34,14 @@ public class MemberResponseDTO {
         Boolean isFirst;
         Boolean isLast;
 
+
+    public static class ReviewPreViewListDTO {
+        List<ReviewPreViewDTO> reviewList;
+        Integer listSize;
+        Integer totalPage;
+        Long totalElements;
+        Boolean isFirst;
+        Boolean isLast;
     }
 
     @Builder
@@ -43,5 +53,12 @@ public class MemberResponseDTO {
         Integer reward;
         String missionSpec;
     }
-
+      
+    public static class ReviewPreViewDTO {
+        String ownerNickname;
+        Float score;
+        String body;
+        String storeName;
+        LocalDate createdAt;
+    }
 }
